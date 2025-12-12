@@ -1,7 +1,11 @@
 import React from "react";
-
+import MainLayout from "../MainLayout/MainLayout";
 const App = () => {
-  return <div>Task mint</div>;
+  return (
+    <div>
+      <MainLayout />
+    </div>
+  );
 };
 
 export default App;
