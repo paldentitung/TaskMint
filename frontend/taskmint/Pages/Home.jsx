@@ -111,7 +111,7 @@ const Home = () => {
 
         {/* recent tasks */}
         <section className="flex flex-col gap-3">
-          <h3 className="text-lg font-semibold">Overview Cards</h3>
+          <h3 className="text-lg font-semibold">Recent Tasks </h3>
           <div className="space-y-3">
             {/* Task 1 */}
             <div

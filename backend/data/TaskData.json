@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Go Gym",
+    "priority": "High",
+    "dueDate": "2025-12-15"
+  },
+  {
+    "id": 2,
+    "title": "Finish Project Report",
+    "priority": "Medium",
+    "dueDate": "2025-12-18"
+  },
+  {
+    "id": 3,
+    "title": "Team Meeting",
+    "priority": "Low",
+    "dueDate": "2025-12-20"
+  },
+  {
+    "id": 4,
+    "title": "Prepare Presentation",
+    "priority": "High",
+    "dueDate": "2025-12-16"
+  }
+]
