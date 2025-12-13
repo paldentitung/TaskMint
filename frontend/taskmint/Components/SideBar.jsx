@@ -1,7 +1,9 @@
-import React from "react";
 import { FaHome, FaTasks, FaCog } from "react-icons/fa";
 import { NavLink } from "react-router";
+import { useState } from "react";
 const SideBar = () => {
+  const [showSideBar, setShowSideBar] = useState(false);
+
   const links = [
     {
       id: 1,
@@ -25,8 +27,16 @@ const SideBar = () => {
   return (
     <div className="h-screen w-[320px] bg-[rgb(31,31,31)] flex flex-col gap-8 p-4">
       <div className="flex items-center gap-1 p-2">
-        <span className="bg-green-400 text-gray-700 p-2 rounded-full">TM</span>
-        <h1 className="text-2xl text-green-400 font-semibold">TaskMint</h1>
+        <span className="bg-indigo-400  p-2 text-white rounded-full">TM</span>
+        <h1 className="text-2xl  font-semibold">TaskMint</h1>
+        <button
+          onClick={() => setShowSideBar(!showSideBar)}
+          className="md:hidden"
+        >
+          <span className="bg-green-400 text-gray-700 p-2 rounded-full">
+            TM
+          </span>
+        </button>{" "}
       </div>
       <nav>
         <ul className="flex flex-col gap-5">
