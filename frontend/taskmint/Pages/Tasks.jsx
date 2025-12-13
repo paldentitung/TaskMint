@@ -1,10 +1,55 @@
 import React from "react";
 import Header from "../Components/Header";
+import TasksList from "../Components/TasksList";
 const Tasks = () => {
   return (
     <div>
       <Header title="Tasks" subtitle="All your Task " />
-      <h1 className="text-4xl">Task</h1>
+      <section className="p-6 flex flex-col gap-10">
+        {/* search bar */}
+        <section>
+          <input
+            type="search"
+            placeholder="Search Task Here ...."
+            className=" w-full text-sm p-4 rounded-md outline-0 ring-2 ring-gray-400 transition-all duration-300 focus:ring-indigo-400"
+          />
+        </section>
+        {/* filtering the task */}
+        <section className="flex flex-col gap-4">
+          <h3 className="text-lg font-semibold">Filter the Task</h3>
+          <div className="flex justify-between gap-3">
+            <div className="flex-1">
+              <select
+                name=""
+                id=""
+                className="w-full p-2 bg-neutral-900 rounded-md ring-2  ring-gray-400 border-0 outline-0 transition-all duration-300 focus:ring-indigo-400"
+              >
+                <option value="">All Priorities</option>
+                <option value="">High</option>
+                <option value="">Medium</option>
+                <option value="">Low</option>
+              </select>
+            </div>
+            <div className="flex-1">
+              <select
+                name=""
+                id=""
+                className="w-full p-2 bg-neutral-900 rounded-md ring-2  ring-gray-400 border-0 outline-0 transition-all duration-300 focus:ring-indigo-400"
+              >
+                <option value="">All Status</option>
+                <option value="">Completed</option>
+                <option value="">Pending</option>
+              </select>
+            </div>
+          </div>
+        </section>
+        {/* task */}
+        <section className="flex flex-col gap-4">
+          <h3 className="text-lg font-semibold">Tasks</h3>
+
+          <TasksList />
+        </section>
+      </section>
     </div>
   );
 };
