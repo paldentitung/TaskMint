@@ -1,9 +1,9 @@
-import { FaHome, FaTasks, FaCog } from "react-icons/fa";
+import { FaHome, FaTasks, FaCog, FaLandmark } from "react-icons/fa";
 import { NavLink } from "react-router";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AppContext } from "../../AppContext/AppContext";
+import { FaTimes } from "react-icons/fa";
 const SideBar = () => {
-  const [showSideBar, setShowSideBar] = useState(false);
-
   const links = [
     {
       id: 1,
@@ -24,19 +24,24 @@ const SideBar = () => {
       icon: FaCog,
     },
   ];
+  const { sidebarOpen, setSidebarOpen } = useContext(AppContext);
   return (
-    <div className="h-screen w-[320px] bg-[rgb(31,31,31)] flex flex-col gap-8 p-4">
-      <div className="flex items-center gap-1 p-2">
-        <span className="bg-indigo-400  p-2 text-white rounded-full">TM</span>
-        <h1 className="text-2xl  font-semibold">TaskMint</h1>
-        <button
-          onClick={() => setShowSideBar(!showSideBar)}
-          className="md:hidden"
+    <div
+      className={`h-screen bg-[rgb(31,31,31)] flex-col gap-8 p-4  transition-all duration-300
+    ${sidebarOpen ? "flex w-[320px]" : "hidden w-0"} md:flex`}
+    >
+      <div className="flex items-center justify-between gap-1 p-2">
+        <div className="flex gap-1 items-center">
+          {" "}
+          <span className="bg-indigo-400  p-2 text-white rounded-full">TM</span>
+          <h1 className="text-2xl  font-semibold">TaskMint</h1>
+        </div>
+        <div
+          className="block md:hidden"
+          onClick={() => setSidebarOpen(!sidebarOpen)}
         >
-          <span className="bg-green-400 text-gray-700 p-2 rounded-full">
-            TM
-          </span>
-        </button>{" "}
+          <FaTimes size={20} />
+        </div>
       </div>
       <nav>
         <ul className="flex flex-col gap-5">

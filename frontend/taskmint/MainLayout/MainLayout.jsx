@@ -1,12 +1,29 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import SideBar from "../Components/SideBar";
+import { AppContext } from "../../AppContext/AppContext";
+
 const MainLayout = ({ children }) => {
+  const { sidebarOpen } = useContext(AppContext);
+
   return (
-    <main className="  bg-[rgb(25,25,25)] text-white flex flex-col md:flex-row  ">
-      <aside className="h-screen  w-[320px]  fixed border-r border-white">
+    <main className="bg-[rgb(25,25,25)] text-white flex flex-col md:flex-row">
+      {/* Sidebar */}
+      <aside
+        className={`fixed top-0 left-0 h-screen z-50
+          transition-all duration-300
+          ${sidebarOpen ? "w-[320px]" : "w-0 overflow-hidden"}
+        `}
+      >
         <SideBar />
       </aside>
-      <section className="min-h-screen ml-80 w-full ">{children}</section>
+
+      {/* Main content */}
+      <section
+        className={`min-h-screen transition-all duration-300
+          ${sidebarOpen ? "ml-0 md:ml-80" : "ml-0"} w-full`}
+      >
+        {children}
+      </section>
     </main>
   );
 };
