@@ -6,7 +6,7 @@ const MainLayout = ({ children }) => {
       <aside className="h-screen  w-[320px]  fixed border-r border-white">
         <SideBar />
       </aside>
-      <section className="h-screen ml-80 w-full ">{children}</section>
+      <section className="min-h-screen ml-80 w-full ">{children}</section>
     </main>
   );
 };
