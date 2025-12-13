@@ -15,24 +15,24 @@ const Setting = () => {
               Username
               <input
                 type="text"
-                defaultValue="Palden Dorje Titung"
-                className="p-2 rounded-md bg-neutral-800 text-white"
+                placeholder="e.g. Palden Dorje Titung"
+                className="p-3  bg-neutral-800 text-white rounded-md ring-2  ring-gray-400 border-0 outline-0 transition-all duration-300 focus:ring-indigo-400"
               />
             </label>
             <label className="flex flex-col gap-2">
               Email
               <input
                 type="email"
-                defaultValue="Palden@gmail.com"
-                className="p-2 rounded-md bg-neutral-800 text-white"
+                placeholder="e.g. palden@gmail.com"
+                className="p-3  bg-neutral-800 text-white rounded-md ring-2  ring-gray-400 border-0 outline-0 transition-all duration-300 focus:ring-indigo-400"
               />
             </label>
             <label className="flex flex-col gap-2">
               Password
               <input
                 type="password"
-                defaultValue="10000000"
-                className="p-3 rounded-md bg-neutral-800 text-white"
+                placeholder="Enter a secure password"
+                className="p-3  bg-neutral-800 text-white rounded-md ring-2  ring-gray-400 border-0 outline-0 transition-all duration-300 focus:ring-indigo-400"
               />
             </label>
             <div>
