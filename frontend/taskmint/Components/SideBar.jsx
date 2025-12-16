@@ -1,8 +1,9 @@
 import { FaHome, FaTasks, FaCog, FaLandmark } from "react-icons/fa";
 import { NavLink } from "react-router";
 import { useContext, useState } from "react";
-import { AppContext } from "../../AppContext/AppContext";
+
 import { FaTimes } from "react-icons/fa";
+import { AppContext } from "../context/AppContext";
 const SideBar = () => {
   const links = [
     {
@@ -24,7 +25,7 @@ const SideBar = () => {
       icon: FaCog,
     },
   ];
-  const { sidebarOpen, setSidebarOpen } = useContext(AppContext);
+  const { setSidebarOpen, sidebarOpen } = useContext(AppContext);
   return (
     <div
       className={`h-screen bg-[rgb(31,31,31)] flex-col gap-8 p-4  transition-all duration-300

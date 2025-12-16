@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaEdit, FaTrash, FaCircle } from "react-icons/fa";
+import { AppContext } from "../context/AppContext";
 
 const tasks = [
   { title: "Go Gym", priority: "High", color: "red-500", due: "Dec 15, 2025" },
@@ -48,9 +49,10 @@ const tasks = [
 ];
 
 const TasksList = () => {
+  const { data } = useContext(AppContext);
   return (
     <div className="space-y-3">
-      {tasks.map((task, index) => (
+      {data.map((task, index) => (
         <div
           key={index}
           className="bg-neutral-900 p-3 rounded-md flex justify-between items-center
@@ -60,7 +62,7 @@ const TasksList = () => {
             <span className="font-semibold">{task.title}</span>
             <span className="flex items-center gap-2 text-sm text-gray-400">
               <FaCircle className={`text-${task.color}`} size={12} />
-              {task.priority} • Due: {task.due}
+              {task.priority} • Due: {task.dueDate}
             </span>
           </div>
 

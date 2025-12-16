@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Header from "../Components/Header";
 import {
   FaPlus,
@@ -8,7 +8,11 @@ import {
   FaTrash,
   FaCircle,
 } from "react-icons/fa";
-
+import Modal from "../Components/Modal";
+import { Link } from "react-router";
+import Button from "../Components/Button";
+import { AppContext } from "../context/AppContext";
+import TasksList from "../Components/TasksList";
 const Home = () => {
   const OverviewCards = [
     {
@@ -32,6 +36,7 @@ const Home = () => {
       Task: 4,
     },
   ];
+  const { showModal, setShowModal } = useContext(AppContext);
   return (
     <section className="w-full ">
       <Header title="Home" subtitle="Hers's your Productivity overview" />
@@ -39,7 +44,7 @@ const Home = () => {
         {/* overview cards */}
         <section className="flex flex-col gap-3">
           <h3 className="text-lg font-semibold">Overview Cards</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 h-20 ">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5  ">
             {OverviewCards.map((card) => (
               <div
                 key={card.id}
@@ -58,6 +63,7 @@ const Home = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Add Task */}
             <button
+              onClick={() => setShowModal(true)}
               className="
         bg-neutral-900 border border-neutral-800
         p-6 rounded-xl text-left
@@ -73,6 +79,7 @@ const Home = () => {
                 Create a task and set priority
               </p>
             </button>
+
             {/* View Tasks */}
             <button
               className="
@@ -82,14 +89,17 @@ const Home = () => {
         transition-all duration-300 hover:cursor-pointer
       "
             >
-              <div className="text-xl mb-2">
-                <FaClipboardList />
-              </div>
-              <h3 className="font-medium">View All Tasks</h3>
-              <p className="text-sm text-gray-400 mt-1">
-                See and manage your task list
-              </p>
+              <Link to="/tasks">
+                <div className="text-xl mb-2">
+                  <FaClipboardList />
+                </div>
+                <h3 className="font-medium">View All Tasks</h3>
+                <p className="text-sm text-gray-400 mt-1">
+                  See and manage your task list
+                </p>
+              </Link>
             </button>
+
             <button
               className="
         bg-neutral-900 border border-neutral-800
@@ -112,109 +122,53 @@ const Home = () => {
         {/* recent tasks */}
         <section className="flex flex-col gap-3">
           <h3 className="text-lg font-semibold">Recent Tasks </h3>
-          <div className="space-y-3">
-            {/* Task 1 */}
-            <div
-              className="bg-neutral-900 p-3 rounded-md flex justify-between items-center
-      hover:bg-neutral-700 transition-all duration-300 shadow-md"
-            >
-              <div className="flex flex-col gap-1">
-                <span className="font-semibold">Go Gym</span>
-                <span className="flex items-center gap-2 text-sm text-gray-400">
-                  <FaCircle className="text-red-500" size={12} />
-                  High • Due: Dec 15, 2025
-                </span>
-              </div>
-
-              <div className="flex gap-4">
-                <FaEdit
-                  size={20}
-                  className="transition-all duration-500 hover:cursor-pointer hover:text-blue-500"
-                />
-                <FaTrash
-                  size={20}
-                  className="transition-all duration-500 hover:cursor-pointer hover:text-red-500"
-                />
-              </div>
-            </div>
-
-            {/* Task 2 */}
-            <div
-              className="bg-neutral-900 p-3 rounded-md flex justify-between items-center
-      hover:bg-neutral-700 transition-all duration-300 shadow-md"
-            >
-              <div className="flex flex-col gap-1">
-                <span className="font-semibold">Finish Project Report</span>
-                <span className="flex items-center gap-2 text-sm text-gray-400">
-                  <FaCircle className="text-yellow-500" size={12} />
-                  Medium • Due: Dec 18, 2025
-                </span>
-              </div>
-
-              <div className="flex gap-4">
-                <FaEdit
-                  size={20}
-                  className="transition-all duration-500 hover:cursor-pointer hover:text-blue-500"
-                />
-                <FaTrash
-                  size={20}
-                  className="transition-all duration-500 hover:cursor-pointer hover:text-red-500"
-                />
-              </div>
-            </div>
-
-            {/* Task 3 */}
-            <div
-              className="bg-neutral-900 p-3 rounded-md flex justify-between items-center
-      hover:bg-neutral-700 transition-all duration-300 shadow-md"
-            >
-              <div className="flex flex-col gap-1">
-                <span className="font-semibold">Team Meeting</span>
-                <span className="flex items-center gap-2 text-sm text-gray-400">
-                  <FaCircle className="text-green-500" size={12} />
-                  Low • Due: Dec 20, 2025
-                </span>
-              </div>
-
-              <div className="flex gap-4">
-                <FaEdit
-                  size={20}
-                  className="transition-all duration-500 hover:cursor-pointer hover:text-blue-500"
-                />
-                <FaTrash
-                  size={20}
-                  className="transition-all duration-500 hover:cursor-pointer hover:text-red-500"
-                />
-              </div>
-            </div>
-
-            {/* Task 4 */}
-            <div
-              className="bg-neutral-900 p-3 rounded-md flex justify-between items-center
-      hover:bg-neutral-700 transition-all duration-300 shadow-md"
-            >
-              <div className="flex flex-col gap-1">
-                <span className="font-semibold">Prepare Presentation</span>
-                <span className="flex items-center gap-2 text-sm text-gray-400">
-                  <FaCircle className="text-red-500" size={12} />
-                  High • Due: Dec 16, 2025
-                </span>
-              </div>
-
-              <div className="flex gap-4">
-                <FaEdit
-                  size={20}
-                  className="transition-all duration-500 hover:cursor-pointer hover:text-blue-500"
-                />
-                <FaTrash
-                  size={20}
-                  className="transition-all duration-500 hover:cursor-pointer hover:text-red-500"
-                />
-              </div>
-            </div>
+          <div>
+            <TasksList />
           </div>
         </section>
       </section>
+      {/* modal */}
+      <Modal>
+        <form
+          action=""
+          className=" w-full p-4 shadow-lg bg-neutral-900 flex flex-col gap-5"
+        >
+          <h3>Add Task:</h3>
+          <div className="flex flex-col gap-2">
+            <label htmlFor="title">Title</label>
+            <input
+              type="text"
+              name="title"
+              placeholder="Go Gym ....."
+              className="p-3  bg-neutral-800 text-white rounded-md ring-2  ring-gray-400 border-0 outline-0 transition-all duration-300 focus:ring-indigo-400"
+            />
+          </div>
+          <div className="flex flex-col gap-2">
+            <label htmlFor="due-date">Due Date</label>
+            <input
+              type="date"
+              name="due-date"
+              className="p-3  bg-neutral-800 text-white rounded-md ring-2  ring-gray-400 border-0 outline-0 transition-all duration-300 focus:ring-indigo-400"
+            />
+          </div>
+          <div className=" flex flex-col gap-2 ">
+            <label htmlFor="">Select the Priority</label>
+            <select
+              name=""
+              id=""
+              className="p-3  bg-neutral-800 text-white rounded-md ring-2  ring-gray-400 border-0 outline-0 transition-all duration-300 focus:ring-indigo-400"
+            >
+              <option value="">All Priority</option>
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+          <div>
+            <Button name="Add" />
+          </div>
+        </form>
+      </Modal>
     </section>
   );
 };

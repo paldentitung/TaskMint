@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import SideBar from "../Components/SideBar";
-import { AppContext } from "../../AppContext/AppContext";
+import { AppContext } from "../context/AppContext";
 
 const MainLayout = ({ children }) => {
   const { sidebarOpen } = useContext(AppContext);

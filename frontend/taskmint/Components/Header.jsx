@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import Button from "./Button";
 import { FaBars } from "react-icons/fa";
-import { AppContext } from "../../AppContext/AppContext";
 import SideBar from "./SideBar";
+import { AppContext } from "../context/AppContext";
 const Header = ({ title, subtitle }) => {
   const { sidebarOpen, setSidebarOpen } = useContext(AppContext);
   return (
