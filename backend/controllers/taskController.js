@@ -42,6 +42,29 @@ exports.createTask = (req, res) => {
   res.status(200).json({ message: "Task Created" });
 };
 
+exports.updateTask = (req, res) => {
+  const id = parseInt(req.params.id);
+
+  const tasks = getTasks();
+  const { title, priority, dueDate, IsCompleted } = req.body;
+  const taskIndex = tasks.findIndex((task) => task.id === id);
+
+  if (taskIndex === -1) {
+    res.status(404).json({ message: "Task Not Found" });
+  }
+
+  tasks[taskIndex] = {
+    ...tasks[taskIndex],
+    title,
+    priority,
+    dueDate,
+  };
+  saveTasks(tasks);
+  res.status(200).json({
+    message: "Update the Task",
+  });
+};
+
 exports.deleteTask = (req, res) => {
   const id = parseInt(req.params.id);
   const tasks = getTasks();
