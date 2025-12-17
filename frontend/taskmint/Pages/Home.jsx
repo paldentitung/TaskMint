@@ -13,6 +13,7 @@ import { Link } from "react-router";
 import Button from "../Components/Button";
 import { AppContext } from "../context/AppContext";
 import TasksList from "../Components/TasksList";
+import { useState } from "react";
 const Home = () => {
   const OverviewCards = [
     {
@@ -36,7 +37,32 @@ const Home = () => {
       Task: 4,
     },
   ];
-  const { showModal, setShowModal } = useContext(AppContext);
+  const { showModal, setShowModal, createTask } = useContext(AppContext);
+  const [title, setTitle] = useState("");
+  const [priority, setPriority] = useState("");
+  const [dueDate, setDueDate] = useState("");
+
+  const handleSubmit = () => {
+    if (title.value === "") {
+      alert("enter a value title");
+      return;
+    }
+    if (priority.value === "") {
+      alert("enter a value title");
+      return;
+    }
+    if (dueDate.value === "") {
+      alert("enter a value title");
+      return;
+    }
+    const newTask = {
+      title,
+      priority,
+      dueDate,
+    };
+
+    createTask(newTask);
+  };
   return (
     <section className="w-full ">
       <Header title="Home" subtitle="Hers's your Productivity overview" />
@@ -131,6 +157,7 @@ const Home = () => {
       <Modal>
         <form
           action=""
+          onSubmit={handleSubmit}
           className=" w-full p-4 shadow-lg bg-neutral-900 flex flex-col gap-5"
         >
           <h3>Add Task:</h3>
@@ -140,6 +167,8 @@ const Home = () => {
               type="text"
               name="title"
               placeholder="Go Gym ....."
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
               className="p-3  bg-neutral-800 text-white rounded-md ring-2  ring-gray-400 border-0 outline-0 transition-all duration-300 focus:ring-indigo-400"
             />
           </div>
@@ -148,6 +177,8 @@ const Home = () => {
             <input
               type="date"
               name="due-date"
+              value={dueDate}
+              onChange={(e) => setDueDate(e.target.value)}
               className="p-3  bg-neutral-800 text-white rounded-md ring-2  ring-gray-400 border-0 outline-0 transition-all duration-300 focus:ring-indigo-400"
             />
           </div>
@@ -156,6 +187,8 @@ const Home = () => {
             <select
               name=""
               id=""
+              value={priority}
+              onChange={(e) => setPriority(e.target.value)}
               className="p-3  bg-neutral-800 text-white rounded-md ring-2  ring-gray-400 border-0 outline-0 transition-all duration-300 focus:ring-indigo-400"
             >
               <option value="">All Priority</option>
@@ -165,7 +198,7 @@ const Home = () => {
             </select>
           </div>
           <div>
-            <Button name="Add" />
+            <Button name="Add" type="submit" />
           </div>
         </form>
       </Modal>

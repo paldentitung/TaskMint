@@ -12,6 +12,18 @@ export const AppProvider = ({ children }) => {
     console.log(data);
     setData(data);
   };
+  const createTask = async (data) => {
+    const res = await fetch("http://localhost:3000/api/tasks", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    (await res).json();
+    getTasks();
+  };
   useEffect(() => {
     getTasks();
   }, []);
@@ -24,6 +36,7 @@ export const AppProvider = ({ children }) => {
         showModal,
         data,
         setData,
+        createTask,
       }}
     >
       {children}
