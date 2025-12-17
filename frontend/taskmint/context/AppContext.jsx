@@ -24,6 +24,14 @@ export const AppProvider = ({ children }) => {
     (await res).json();
     getTasks();
   };
+
+  const deleteTask = async (id) => {
+    const res = await fetch(`http://localhost:3000/api/tasks/${id}`, {
+      method: "DELETE",
+    });
+    const data = await res.json();
+    getTasks();
+  };
   useEffect(() => {
     getTasks();
   }, []);
@@ -37,6 +45,7 @@ export const AppProvider = ({ children }) => {
         data,
         setData,
         createTask,
+        deleteTask,
       }}
     >
       {children}
