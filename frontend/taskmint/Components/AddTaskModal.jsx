@@ -2,12 +2,12 @@ import { useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import Button from "./Button";
 
-const AddTaskModal = () => {
-  const { createTask, setShowModal } = useContext(AppContext);
+const AddTaskModal = ({ task }) => {
+  const { createTask, setShowModal, updateTask } = useContext(AppContext);
 
-  const [title, setTitle] = useState("");
-  const [priority, setPriority] = useState("");
-  const [dueDate, setDueDate] = useState("");
+  const [title, setTitle] = useState(task?.title || "");
+  const [priority, setPriority] = useState(task?.priority || "");
+  const [dueDate, setDueDate] = useState(task?.dueDate || "");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,7 +17,11 @@ const AddTaskModal = () => {
       return;
     }
 
-    createTask({ title, priority, dueDate });
+    if (task) {
+      updateTask(task.id, { title, priority, dueDate });
+    } else {
+      createTask({ title, priority, dueDate });
+    }
 
     setTitle("");
     setPriority("");

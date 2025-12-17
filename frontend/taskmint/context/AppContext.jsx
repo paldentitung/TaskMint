@@ -31,6 +31,20 @@ export const AppProvider = ({ children }) => {
     getTasks();
   };
 
+  const updateTask = async (id, data) => {
+    try {
+      const res = await fetch(`http://localhost:3000/api/tasks/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error("Failed to update task");
+      getTasks();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   const deleteTask = async (id) => {
     await fetch(`http://localhost:3000/api/tasks/${id}`, {
       method: "DELETE",
@@ -56,6 +70,7 @@ export const AppProvider = ({ children }) => {
         setDeleteId,
         modalContent,
         setModalContent,
+        updateTask,
       }}
     >
       {children}
