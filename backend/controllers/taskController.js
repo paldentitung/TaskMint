@@ -41,3 +41,21 @@ exports.createTask = (req, res) => {
 
   res.status(200).json({ message: "Task Created" });
 };
+
+exports.deleteTask = (req, res) => {
+  const id = parseInt(req.params.id);
+  const tasks = getTasks();
+
+  const taskIndex = tasks.findIndex((task) => task.id === id);
+
+  if (taskIndex === -1) {
+    res.status(404).json({ message: "Task Not Found" });
+  }
+
+  tasks.splice(taskIndex, 1);
+  saveTasks(tasks);
+
+  res.status(200).json({
+    message: "Task Deleted",
+  });
+};
