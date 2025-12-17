@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import SideBar from "../Components/SideBar";
 import { AppContext } from "../context/AppContext";
+import AddTaskModal from "../Components/AddTaskModal";
 
 const MainLayout = ({ children }) => {
   const { sidebarOpen } = useContext(AppContext);
@@ -22,6 +23,7 @@ const MainLayout = ({ children }) => {
         className={`min-h-screen transition-all duration-300
           ${sidebarOpen ? "ml-0 md:ml-80" : "ml-0"} w-full`}
       >
+        <AddTaskModal />
         {children}
       </section>
     </main>

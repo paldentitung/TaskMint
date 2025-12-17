@@ -37,32 +37,8 @@ const Home = () => {
       Task: 4,
     },
   ];
-  const { showModal, setShowModal, createTask } = useContext(AppContext);
-  const [title, setTitle] = useState("");
-  const [priority, setPriority] = useState("");
-  const [dueDate, setDueDate] = useState("");
+  const { showModal, setShowModal } = useContext(AppContext);
 
-  const handleSubmit = () => {
-    if (title.value === "") {
-      alert("enter a value title");
-      return;
-    }
-    if (priority.value === "") {
-      alert("enter a value title");
-      return;
-    }
-    if (dueDate.value === "") {
-      alert("enter a value title");
-      return;
-    }
-    const newTask = {
-      title,
-      priority,
-      dueDate,
-    };
-
-    createTask(newTask);
-  };
   return (
     <section className="w-full ">
       <Header title="Home" subtitle="Hers's your Productivity overview" />
@@ -153,55 +129,6 @@ const Home = () => {
           </div>
         </section>
       </section>
-      {/* modal */}
-      <Modal>
-        <form
-          action=""
-          onSubmit={handleSubmit}
-          className=" w-full p-4 shadow-lg bg-neutral-900 flex flex-col gap-5"
-        >
-          <h3>Add Task:</h3>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="title">Title</label>
-            <input
-              type="text"
-              name="title"
-              placeholder="Go Gym ....."
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              className="p-3  bg-neutral-800 text-white rounded-md ring-2  ring-gray-400 border-0 outline-0 transition-all duration-300 focus:ring-indigo-400"
-            />
-          </div>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="due-date">Due Date</label>
-            <input
-              type="date"
-              name="due-date"
-              value={dueDate}
-              onChange={(e) => setDueDate(e.target.value)}
-              className="p-3  bg-neutral-800 text-white rounded-md ring-2  ring-gray-400 border-0 outline-0 transition-all duration-300 focus:ring-indigo-400"
-            />
-          </div>
-          <div className=" flex flex-col gap-2 ">
-            <label htmlFor="">Select the Priority</label>
-            <select
-              name=""
-              id=""
-              value={priority}
-              onChange={(e) => setPriority(e.target.value)}
-              className="p-3  bg-neutral-800 text-white rounded-md ring-2  ring-gray-400 border-0 outline-0 transition-all duration-300 focus:ring-indigo-400"
-            >
-              <option value="">All Priority</option>
-              <option value="high">High</option>
-              <option value="medium">Medium</option>
-              <option value="low">Low</option>
-            </select>
-          </div>
-          <div>
-            <Button name="Add" type="submit" />
-          </div>
-        </form>
-      </Modal>
     </section>
   );
 };
