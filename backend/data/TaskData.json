@@ -19,5 +19,12 @@
     "priority": "Low",
     "dueDate": "2025-12-20",
     "completed": true
+  },
+  {
+    "id": 4,
+    "title": "Prepare Presentation",
+    "priority": "High",
+    "dueDate": "2025-12-16",
+    "completed": false
   }
 ]

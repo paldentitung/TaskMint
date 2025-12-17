@@ -14,6 +14,7 @@ import Button from "../Components/Button";
 import { AppContext } from "../context/AppContext";
 import TasksList from "../Components/TasksList";
 import { useState } from "react";
+import AddTaskModal from "../Components/AddTaskModal.jsx";
 const Home = () => {
   const OverviewCards = [
     {
@@ -37,7 +38,7 @@ const Home = () => {
       Task: 4,
     },
   ];
-  const { showModal, setShowModal } = useContext(AppContext);
+  const { showModal, setShowModal, setModalContent } = useContext(AppContext);
 
   return (
     <section className="w-full ">
@@ -65,7 +66,10 @@ const Home = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Add Task */}
             <button
-              onClick={() => setShowModal(true)}
+              onClick={() => {
+                setModalContent(<AddTaskModal />);
+                setShowModal(true);
+              }}
               className="
         bg-neutral-900 border border-neutral-800
         p-6 rounded-xl text-left

@@ -6,11 +6,17 @@ export const AppProvider = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [data, setData] = useState([]);
+  const [deleteId, setDeleteId] = useState(null);
+  const [modalContent, setModalContent] = useState(null);
+
   const getTasks = async () => {
-    const res = await fetch("http://localhost:3000/api/tasks");
-    const data = await res.json();
-    console.log(data);
-    setData(data);
+    try {
+      const res = await fetch("http://localhost:3000/api/tasks");
+      const data = await res.json();
+      setData(data);
+    } catch (err) {
+      console.error(err);
+    }
   };
   const createTask = async (data) => {
     const res = await fetch("http://localhost:3000/api/tasks", {
@@ -26,12 +32,12 @@ export const AppProvider = ({ children }) => {
   };
 
   const deleteTask = async (id) => {
-    const res = await fetch(`http://localhost:3000/api/tasks/${id}`, {
+    await fetch(`http://localhost:3000/api/tasks/${id}`, {
       method: "DELETE",
     });
-    const data = await res.json();
     getTasks();
   };
+
   useEffect(() => {
     getTasks();
   }, []);
@@ -46,6 +52,10 @@ export const AppProvider = ({ children }) => {
         setData,
         createTask,
         deleteTask,
+        deleteId,
+        setDeleteId,
+        modalContent,
+        setModalContent,
       }}
     >
       {children}

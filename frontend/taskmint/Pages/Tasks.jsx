@@ -4,8 +4,9 @@ import TasksList from "../Components/TasksList";
 import { FaPlus } from "react-icons/fa";
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
+import AddTaskModal from "../Components/AddTaskModal";
 const Tasks = () => {
-  const { setShowModal } = useContext(AppContext);
+  const { setShowModal, setModalContent } = useContext(AppContext);
   return (
     <div>
       <Header title="Tasks" subtitle="All your Task " />
@@ -53,7 +54,10 @@ const Tasks = () => {
             {" "}
             <h3 className="text-lg font-semibold">Tasks</h3>
             <button
-              onClick={() => setShowModal(true)}
+              onClick={() => {
+                setShowModal(true);
+                setModalContent(<AddTaskModal />);
+              }}
               className="flex items-center gap-2 px-4 py-2 bg-indigo-400 hover:bg-indigo-500 active:bg-indigo-700 text-white font-medium rounded-md shadow-md transition-all duration-200 ring-1 ring-indigo-400 hover:ring-indigo-500 hover:cursor-pointer"
             >
               <FaPlus className="w-4 h-4" />
