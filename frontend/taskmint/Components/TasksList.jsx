@@ -12,6 +12,7 @@ const TasksList = () => {
     setDeleteId,
     setModalContent,
     updateTask,
+    toggleCompleteTask,
   } = useContext(AppContext);
 
   const priorityColors = {
@@ -29,10 +30,20 @@ const TasksList = () => {
           hover:bg-neutral-700 transition-all duration-300 shadow-md"
         >
           <div>
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              checked={task.completed}
+              onChange={() => toggleCompleteTask(task)}
+            />
           </div>
           <div className="flex flex-col gap-1 mr-auto ml-4">
-            <span className="font-semibold">{task.title}</span>
+            <span
+              className={`font-semibold ${
+                task.completed ? "line-through text-gray-500" : ""
+              }`}
+            >
+              {task.title}
+            </span>
             <span className="flex items-center gap-2 text-sm text-gray-400">
               <FaCircle className={priorityColors[task.priority]} size={12} />
               {task.priority} • Due: {task.dueDate}

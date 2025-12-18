@@ -51,6 +51,36 @@ export const AppProvider = ({ children }) => {
     });
     getTasks();
   };
+  const toggleCompleteTask = async (task) => {
+    // 1️⃣ Update UI immediately
+    setData((prevData) =>
+      prevData.map((t) =>
+        t.id === task.id ? { ...t, completed: !t.completed } : t
+      )
+    );
+
+    // 2️⃣ Update backend (async)
+    try {
+      await fetch(`http://localhost:3000/api/tasks/${task.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          title: task.title,
+          priority: task.priority,
+          dueDate: task.dueDate,
+          completed: !task.completed,
+        }),
+      });
+    } catch (err) {
+      console.error("Failed to update task:", err);
+      // Optionally revert UI change if API fails
+      setData((prevData) =>
+        prevData.map((t) =>
+          t.id === task.id ? { ...t, completed: task.completed } : t
+        )
+      );
+    }
+  };
 
   useEffect(() => {
     getTasks();
@@ -71,6 +101,7 @@ export const AppProvider = ({ children }) => {
         modalContent,
         setModalContent,
         updateTask,
+        toggleCompleteTask,
       }}
     >
       {children}

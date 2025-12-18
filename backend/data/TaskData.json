@@ -1,30 +1,43 @@
 [
   {
-    "id": 1,
-    "title": "Go Gym-edited",
-    "priority": "High",
-    "dueDate": "2025-12-15",
-    "completed": false
-  },
-  {
     "id": 2,
-    "title": "Finish Project Report",
+    "title": "Finish React Project",
     "priority": "Medium",
-    "dueDate": "2025-12-18",
+    "dueDate": "2025-12-20",
     "completed": false
   },
   {
     "id": 3,
-    "title": "Team Meeting",
+    "title": "Buy Groceries",
     "priority": "Low",
-    "dueDate": "2025-12-20",
+    "dueDate": "2025-12-17",
     "completed": true
   },
   {
     "id": 4,
-    "title": "Prepare Presentation",
-    "priority": "Medium",
-    "dueDate": "2025-12-16",
+    "title": "Read a Book",
+    "priority": "Low",
+    "dueDate": "2025-12-22",
     "completed": false
+  },
+  {
+    "id": 5,
+    "title": "Submit Assignment",
+    "priority": "High",
+    "dueDate": "2025-12-19",
+    "completed": false
+  },
+  {
+    "id": 6,
+    "title": "Call Parents",
+    "priority": "Medium",
+    "dueDate": "2025-12-21",
+    "completed": true
+  },
+  {
+    "id": 1766046898008,
+    "title": "fsa",
+    "priority": "Medium",
+    "dueDate": "2025-12-19"
   }
 ]
