@@ -9,6 +9,8 @@ export const AppProvider = ({ children }) => {
   const [deleteId, setDeleteId] = useState(null);
   const [modalContent, setModalContent] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [priorityFilter, setPriorityFilter] = useState("");
+  const [statusFilter, setStatusFilter] = useState("");
 
   const getTasks = async () => {
     try {
@@ -83,9 +85,17 @@ export const AppProvider = ({ children }) => {
     }
   };
 
-  const filterTaskData = data.filter((task) =>
-    task.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filterTaskData = data.filter((task) => {
+    const matchSearch = task.title
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+    const matchPriority = priorityFilter
+      ? task.priority === priorityFilter
+      : true;
+    const matchStatus = statusFilter ? task.status === statusFilter : true;
+
+    return matchSearch && matchPriority && matchStatus;
+  });
 
   useEffect(() => {
     getTasks();
@@ -110,6 +120,10 @@ export const AppProvider = ({ children }) => {
         filterTaskData,
         searchQuery,
         setSearchQuery,
+        priorityFilter,
+        setPriorityFilter,
+        statusFilter,
+        setStatusFilter,
       }}
     >
       {children}

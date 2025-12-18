@@ -6,8 +6,16 @@ import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import AddTaskModal from "../Components/AddTaskModal";
 const Tasks = () => {
-  const { setShowModal, setModalContent, searchQuery, setSearchQuery } =
-    useContext(AppContext);
+  const {
+    setShowModal,
+    setModalContent,
+    searchQuery,
+    setSearchQuery,
+    setPriorityFilter,
+    priorityFilter,
+    statusFilter,
+    setStatusFilter,
+  } = useContext(AppContext);
   return (
     <div>
       <Header title="Tasks" subtitle="All your Task " />
@@ -30,23 +38,27 @@ const Tasks = () => {
               <select
                 name=""
                 id=""
+                value={priorityFilter}
+                onChange={(e) => setPriorityFilter(e.target.value)}
                 className="w-full p-2 bg-neutral-900 rounded-md ring-2  ring-gray-400 border-0 outline-0 transition-all duration-300 focus:ring-indigo-400"
               >
                 <option value="">All Priorities</option>
-                <option value="">High</option>
-                <option value="">Medium</option>
-                <option value="">Low</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
               </select>
             </div>
             <div className="flex-1">
               <select
                 name=""
                 id=""
+                value={statusFilter}
+                onChange={(e) => setStatusFilter(e.target.value)}
                 className="w-full p-2 bg-neutral-900 rounded-md ring-2  ring-gray-400 border-0 outline-0 transition-all duration-300 focus:ring-indigo-400"
               >
                 <option value="">All Status</option>
-                <option value="">Completed</option>
-                <option value="">Pending</option>
+                <option value="Completed">Completed</option>
+                <option value="Pending">Pending</option>
               </select>
             </div>
           </div>

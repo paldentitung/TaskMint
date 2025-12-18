@@ -2,8 +2,8 @@
   {
     "id": 2,
     "title": "Finish React Project",
-    "priority": "Medium",
-    "dueDate": "2025-12-20",
+    "priority": "Low",
+    "dueDate": "2025-12-25",
     "completed": false
   },
   {
