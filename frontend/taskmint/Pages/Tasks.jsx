@@ -6,7 +6,8 @@ import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import AddTaskModal from "../Components/AddTaskModal";
 const Tasks = () => {
-  const { setShowModal, setModalContent } = useContext(AppContext);
+  const { setShowModal, setModalContent, searchQuery, setSearchQuery } =
+    useContext(AppContext);
   return (
     <div>
       <Header title="Tasks" subtitle="All your Task " />
@@ -15,6 +16,8 @@ const Tasks = () => {
         <section>
           <input
             type="search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search Task Here ...."
             className=" w-full text-sm p-4 rounded-md outline-0 ring-2 ring-gray-400 transition-all duration-300 focus:ring-indigo-400"
           />

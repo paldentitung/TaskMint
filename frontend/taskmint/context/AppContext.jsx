@@ -8,6 +8,7 @@ export const AppProvider = ({ children }) => {
   const [data, setData] = useState([]);
   const [deleteId, setDeleteId] = useState(null);
   const [modalContent, setModalContent] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const getTasks = async () => {
     try {
@@ -82,6 +83,10 @@ export const AppProvider = ({ children }) => {
     }
   };
 
+  const filterTaskData = data.filter((task) =>
+    task.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   useEffect(() => {
     getTasks();
   }, []);
@@ -102,6 +107,9 @@ export const AppProvider = ({ children }) => {
         setModalContent,
         updateTask,
         toggleCompleteTask,
+        filterTaskData,
+        searchQuery,
+        setSearchQuery,
       }}
     >
       {children}

@@ -33,11 +33,5 @@
     "priority": "Medium",
     "dueDate": "2025-12-21",
     "completed": true
-  },
-  {
-    "id": 1766046898008,
-    "title": "fsa",
-    "priority": "Medium",
-    "dueDate": "2025-12-19"
   }
 ]
