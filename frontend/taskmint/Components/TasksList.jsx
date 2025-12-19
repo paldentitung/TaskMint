@@ -3,6 +3,7 @@ import { FaEdit, FaTrash, FaCircle } from "react-icons/fa";
 import { AppContext } from "../context/AppContext";
 import DeleteTaskMessage from "./DeleteTaskMessage";
 import AddTaskModal from "./AddTaskModal";
+import { motion } from "framer-motion";
 const TasksList = () => {
   const {
     data,
@@ -27,8 +28,11 @@ const TasksList = () => {
       {filterTaskData.length > 0 ? (
         <>
           {filterTaskData.map((task, index) => (
-            <div
+            <motion.div
               key={task.id}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
               className="bg-neutral-900 p-3 rounded-md flex justify-between items-center
           hover:bg-neutral-700 transition-all duration-300 shadow-md"
             >
@@ -75,7 +79,7 @@ const TasksList = () => {
                   className="transition-all duration-500 hover:cursor-pointer hover:text-red-500"
                 />
               </div>
-            </div>
+            </motion.div>
           ))}
         </>
       ) : (
