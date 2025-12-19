@@ -50,11 +50,12 @@ const Tasks = () => {
             </div>
             <div className="flex-1">
               <select
-                name=""
-                id=""
-                value={statusFilter}
-                onChange={(e) => setStatusFilter(e.target.value)}
-                className="w-full p-2 bg-neutral-900 rounded-md ring-2  ring-gray-400 border-0 outline-0 transition-all duration-300 focus:ring-indigo-400"
+                value={statusFilter === null ? "" : String(statusFilter)}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setStatusFilter(value === "" ? null : value === "true");
+                }}
+                className="w-full p-2 bg-neutral-900 rounded-md ring-2 ring-gray-400 focus:ring-indigo-400"
               >
                 <option value="">All Status</option>
                 <option value="true">Completed</option>

@@ -128,13 +128,15 @@ const Home = () => {
         transition-all duration-300 hover:cursor-pointer
       "
             >
-              <div className="text-xl mb-2">
-                <FaTags />
-              </div>
-              <h3 className="font-medium">Categories</h3>
-              <p className="text-sm text-gray-400 mt-1">
-                Organize tasks by type
-              </p>
+              <Link to="/tasks">
+                <div className="text-xl mb-2">
+                  <FaTags />
+                </div>
+                <h3 className="font-medium">Categories</h3>
+                <p className="text-sm text-gray-400 mt-1">
+                  Organize tasks by type
+                </p>
+              </Link>
             </button>
           </div>
         </section>
