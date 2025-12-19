@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import Button from "./Button";
-
+import toast from "react-hot-toast";
 const AddTaskModal = ({ task }) => {
   const { createTask, setShowModal, updateTask } = useContext(AppContext);
 
@@ -13,14 +13,16 @@ const AddTaskModal = ({ task }) => {
     e.preventDefault();
 
     if (!title || !priority || !dueDate) {
-      alert("All fields are required");
+      toast.error("All fields are required");
       return;
     }
 
     if (task) {
       updateTask(task.id, { title, priority, dueDate });
+      toast.success("Task updated successfully!");
     } else {
       createTask({ title, priority, dueDate });
+      toast.success("Task added successfully!");
     }
 
     setTitle("");
