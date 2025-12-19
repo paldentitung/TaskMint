@@ -8,7 +8,7 @@ const Modal = () => {
     <>
       {showModal && (
         <div className="fixed h-full w-full flex justify-center items-center z-50 inset-0 bg-black/80">
-          <div className="w-full max-w-150   bg-neutral-950 text-white p-4 shadow-md  rounded-md">
+          <div className="w-full max-w-125   bg-neutral-950 text-white p-4 shadow-md  rounded-md">
             {modalContent}
           </div>
           {/* modal close button */}

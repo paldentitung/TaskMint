@@ -10,7 +10,7 @@ const DeleteTaskMessage = ({ deleteId }) => {
     setShowModal(false);
   };
   return (
-    <div className="flex justify-center items-center flex-col gap-3 ring-1 h-52 bg-white text-black shadow-lg ring-gray-500 rounded-md">
+    <div className="flex justify-center items-center flex-col gap-3 ring-1 h-42 bg-neutral-800 text-white shadow-lg ring-gray-800 rounded-md">
       <p>Are you sure?</p>
 
       <div className="flex gap-3 items-center">

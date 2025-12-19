@@ -11,7 +11,10 @@ export const AppProvider = ({ children }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [priorityFilter, setPriorityFilter] = useState("");
   const [statusFilter, setStatusFilter] = useState(null);
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState(() => {
+    const savedUser = localStorage.getItem("taskmint-user");
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
   const getTasks = async () => {
     try {
       const res = await fetch("http://localhost:3000/api/tasks");
