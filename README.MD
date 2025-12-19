@@ -53,6 +53,6 @@ taskmint-app/
 
 ---
 
-##👨‍💻 Developer
+## 👨‍💻 Developer
 
-####Palden Dorje Titung
+#### Palden Dorje Titung
