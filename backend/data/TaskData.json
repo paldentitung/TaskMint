@@ -1,49 +1,93 @@
 [
   {
-    "id": 2,
+    "id": 1,
     "title": "Finish React Project",
     "priority": "High",
     "dueDate": "2025-12-25",
     "completed": false
   },
   {
-    "id": 3,
+    "id": 2,
     "title": "Buy Groceries",
-    "priority": "Low",
-    "dueDate": "2025-12-17",
+    "priority": "Medium",
+    "dueDate": "2025-12-20",
     "completed": true
   },
   {
-    "id": 4,
+    "id": 3,
     "title": "Read a Book",
     "priority": "Low",
     "dueDate": "2025-12-22",
     "completed": false
   },
   {
-    "id": 5,
+    "id": 4,
     "title": "Submit Assignment",
     "priority": "High",
     "dueDate": "2025-12-19",
     "completed": false
   },
   {
-    "id": 6,
+    "id": 5,
     "title": "Call Parents",
     "priority": "Medium",
     "dueDate": "2025-12-21",
     "completed": true
   },
   {
-    "id": 1766166376313,
-    "title": "1",
-    "priority": "Medium",
-    "dueDate": "2025-12-19"
+    "id": 6,
+    "title": "Plan Weekend Trip",
+    "priority": "Low",
+    "dueDate": "2025-12-26",
+    "completed": false
   },
   {
-    "id": 1766166573534,
-    "title": "1",
+    "id": 7,
+    "title": "Clean Workspace",
+    "priority": "Low",
+    "dueDate": "2025-12-18",
+    "completed": true
+  },
+  {
+    "id": 8,
+    "title": "Prepare Presentation",
+    "priority": "High",
+    "dueDate": "2025-12-23",
+    "completed": false
+  },
+  {
+    "id": 9,
+    "title": "Team Meeting",
     "priority": "Medium",
-    "dueDate": "2025-12-19"
+    "dueDate": "2025-12-19",
+    "completed": false
+  },
+  {
+    "id": 10,
+    "title": "Exercise / Gym",
+    "priority": "High",
+    "dueDate": "2025-12-19",
+    "completed": true
+  },
+  {
+    "id": 11,
+    "title": "Read Emails",
+    "priority": "Medium",
+    "dueDate": "2025-12-19",
+    "completed": false
+  },
+  {
+    "id": 12,
+    "title": "Update Resume",
+    "priority": "High",
+    "dueDate": "2025-12-30",
+    "completed": false
+  },
+  {
+    "id": 13,
+    "title": "Meditation",
+    "priority": "Low",
+    "dueDate": "2025-12-19",
+    "completed": true
   }
 ]

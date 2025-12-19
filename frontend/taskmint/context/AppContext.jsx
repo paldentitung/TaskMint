@@ -87,7 +87,6 @@ export const AppProvider = ({ children }) => {
       );
     }
   };
-
   const filterTaskData = data.filter((task) => {
     const matchSearch = task.title
       .toLowerCase()
