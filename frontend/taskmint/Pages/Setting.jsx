@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import Header from "../Components/Header";
 import { FaUser, FaEnvelope, FaLock, FaSignOutAlt } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const Setting = () => {
   const { userData, setUserData } = useContext(AppContext);
@@ -75,7 +76,12 @@ const Setting = () => {
       <Header title="Settings" subtitle="Manage your profile & preferences" />
 
       {/* Main Section */}
-      <section className="max-w-md mx-auto space-y-6 mt-10">
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="max-w-md mx-auto space-y-6 mt-10"
+      >
         {/* Profile / Login Card */}
         <div className="bg-neutral-900 rounded-3xl shadow-2xl p-8 border border-neutral-800">
           {userData ? (
@@ -214,7 +220,7 @@ const Setting = () => {
             Developer: Palden Dorje Titung
           </p>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };

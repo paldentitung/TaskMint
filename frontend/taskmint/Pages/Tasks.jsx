@@ -5,6 +5,7 @@ import { FaPlus } from "react-icons/fa";
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import AddTaskModal from "../Components/AddTaskModal";
+import { motion } from "framer-motion";
 const Tasks = () => {
   const {
     setShowModal,
@@ -22,8 +23,12 @@ const Tasks = () => {
       <section className="p-6 flex flex-col gap-10">
         {/* search bar */}
         <section>
-          <input
+          <motion.input
             type="search"
+            initial={{ opacity: 0, scaleX: 0 }}
+            animate={{ opacity: 1, scaleX: 1 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            style={{ transformOrigin: "left" }}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search Task Here ...."
@@ -35,9 +40,10 @@ const Tasks = () => {
           <h3 className="text-lg font-semibold">Filter the Task</h3>
           <div className="flex justify-between gap-3">
             <div className="flex-1">
-              <select
-                name=""
-                id=""
+              <motion.select
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
                 value={priorityFilter}
                 onChange={(e) => setPriorityFilter(e.target.value)}
                 className="w-full p-2 bg-neutral-900 rounded-md ring-2  ring-gray-400 border-0 outline-0 transition-all duration-300 focus:ring-indigo-400"
@@ -46,10 +52,13 @@ const Tasks = () => {
                 <option value="High">High</option>
                 <option value="Medium">Medium</option>
                 <option value="Low">Low</option>
-              </select>
+              </motion.select>
             </div>
             <div className="flex-1">
-              <select
+              <motion.select
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
                 value={statusFilter === null ? "" : String(statusFilter)}
                 onChange={(e) => {
                   const value = e.target.value;
@@ -60,7 +69,7 @@ const Tasks = () => {
                 <option value="">All Status</option>
                 <option value="true">Completed</option>
                 <option value="false">Pending</option>
-              </select>
+              </motion.select>
             </div>
           </div>
         </section>
