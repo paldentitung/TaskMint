@@ -36,7 +36,7 @@ const AddTaskModal = ({ task }) => {
       onSubmit={handleSubmit}
       className="w-full p-4 bg-neutral-900 flex flex-col gap-5"
     >
-      <h3>Add Task</h3>
+      <h3>{task ? "Edit Task" : "Add Task"}</h3>
 
       <input
         type="text"
@@ -64,7 +64,7 @@ const AddTaskModal = ({ task }) => {
         <option value="Low">Low</option>
       </select>
 
-      <Button name="Add Task" type="submit" />
+      <Button name={task ? "Update Task" : "Add Task"} type="submit" />
     </form>
   );
 };
