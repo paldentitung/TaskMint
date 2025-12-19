@@ -93,8 +93,7 @@ export const AppProvider = ({ children }) => {
       ? task.priority === priorityFilter
       : true;
     const matchStatus =
-      statusFilter === "" ? true : task.completed === (statusFilter === "true");
-
+      statusFilter === null ? true : task.completed === statusFilter;
     return matchSearch && matchPriority && matchStatus;
   });
 
