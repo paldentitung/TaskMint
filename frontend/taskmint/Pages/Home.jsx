@@ -16,29 +16,43 @@ import TasksList from "../Components/TasksList";
 import { useState } from "react";
 import AddTaskModal from "../Components/AddTaskModal.jsx";
 const Home = () => {
+  const { showModal, setShowModal, setModalContent, data } =
+    useContext(AppContext);
+
+  const highPriorityCount = data.filter(
+    (task) => task.priority === "High"
+  ).length;
+
+  const completedTaskCount = data.filter(
+    (task) => task.completed === true
+  ).length;
+
+  const todayDueDateCount = data.filter((task) => {
+    const today = new Date().toISOString().split("T")[0];
+    return task.dueDate === today;
+  }).length;
   const OverviewCards = [
     {
       id: 1,
       cardName: "Completed",
-      Task: 3,
+      Task: completedTaskCount,
     },
     {
       id: 2,
       cardName: "Pending",
-      Task: 9,
+      Task: data.length,
     },
     {
       id: 3,
       cardName: "High Priority",
-      Task: 10,
+      Task: highPriorityCount,
     },
     {
       id: 4,
       cardName: "Due Today",
-      Task: 4,
+      Task: todayDueDateCount,
     },
   ];
-  const { showModal, setShowModal, setModalContent } = useContext(AppContext);
 
   return (
     <section className="w-full ">

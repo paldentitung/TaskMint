@@ -11,7 +11,7 @@ export const AppProvider = ({ children }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [priorityFilter, setPriorityFilter] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
-
+  const [userData, setUserData] = useState(null);
   const getTasks = async () => {
     try {
       const res = await fetch("http://localhost:3000/api/tasks");
@@ -124,6 +124,8 @@ export const AppProvider = ({ children }) => {
         setPriorityFilter,
         statusFilter,
         setStatusFilter,
+        userData,
+        setUserData,
       }}
     >
       {children}

@@ -44,7 +44,6 @@ exports.createTask = (req, res) => {
 
 exports.updateTask = (req, res) => {
   const id = parseInt(req.params.id);
-
   const tasks = getTasks();
   const { title, priority, dueDate, IsCompleted } = req.body;
   const taskIndex = tasks.findIndex((task) => task.id === id);
