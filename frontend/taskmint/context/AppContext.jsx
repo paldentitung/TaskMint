@@ -10,7 +10,7 @@ export const AppProvider = ({ children }) => {
   const [modalContent, setModalContent] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [priorityFilter, setPriorityFilter] = useState("");
-  const [statusFilter, setStatusFilter] = useState("");
+  const [statusFilter, setStatusFilter] = useState(null);
   const [userData, setUserData] = useState(null);
   const getTasks = async () => {
     try {
@@ -92,7 +92,8 @@ export const AppProvider = ({ children }) => {
     const matchPriority = priorityFilter
       ? task.priority === priorityFilter
       : true;
-    const matchStatus = statusFilter ? task.status === statusFilter : true;
+    const matchStatus =
+      statusFilter === "" ? true : task.completed === (statusFilter === "true");
 
     return matchSearch && matchPriority && matchStatus;
   });

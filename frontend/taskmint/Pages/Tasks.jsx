@@ -57,8 +57,8 @@ const Tasks = () => {
                 className="w-full p-2 bg-neutral-900 rounded-md ring-2  ring-gray-400 border-0 outline-0 transition-all duration-300 focus:ring-indigo-400"
               >
                 <option value="">All Status</option>
-                <option value="Completed">Completed</option>
-                <option value="Pending">Pending</option>
+                <option value="true">Completed</option>
+                <option value="false">Pending</option>
               </select>
             </div>
           </div>
